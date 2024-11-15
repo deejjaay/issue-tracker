@@ -9,6 +9,8 @@ const LoadingIssuesPage = () => {
     const issues = [1, 2, 3, 4, 5, 6];
     return (
         <div>
+            <IssueActions />
+            
             <Table.Root className='mb-5' variant='surface'>
                 <Table.Header>
                 <Table.Row>
@@ -35,7 +37,6 @@ const LoadingIssuesPage = () => {
                 )}
                 </Table.Body>
             </Table.Root>
-            <IssueActions />
         </div>
     )
 }
