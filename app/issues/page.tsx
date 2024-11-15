@@ -17,7 +17,6 @@ const IssuesPage = async () => {
           <Table.Row>
             <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className='hidden md:table-cell'>Status</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className='hidden lg:table-cell'>Description</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className='hidden md:table-cell'>Created</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
@@ -25,14 +24,14 @@ const IssuesPage = async () => {
           {issues.map(issue => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                {issue.title}
-                <div className='block md:hidden'>{issue.description}</div>
+                <Link href={`/issues/${issue.id}`}>
+                  {issue.title}
+                </Link>
                 <div className='block md:hidden'><IssueStatusBadge status={issue.status}/></div>
               </Table.Cell>
               <Table.Cell className='hidden md:table-cell'>
                 <IssueStatusBadge status={issue.status} />
               </Table.Cell>
-              <Table.Cell className='hidden lg:table-cell'>{issue.description}</Table.Cell>
               <Table.Cell className='hidden md:table-cell'>{issue.createdAt.toDateString()}</Table.Cell>
             </Table.Row>)
           )}
