@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Callout, Text, TextField } from '@radix-ui/themes'
+import { Box, Button, Callout, Text, TextField } from '@radix-ui/themes'
 import SimpleMDE from "react-simplemde-editor";
 import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
@@ -12,6 +12,7 @@ import { createIssueSchema } from '@/app/validationSchema';
 import { z } from 'zod';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
+import Link from 'next/link';
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
@@ -54,8 +55,14 @@ const NewIssuePage = () => {
                 />
                 <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
-                <Button disabled={isSubmitting}>Submit New Issue {isSubmitting && <Spinner />}</Button>
+                <div className='flex space-x-2'>
+                    <Button disabled={isSubmitting}>Submit New Issue {isSubmitting && <Spinner />}</Button>
+                    <Button disabled={isSubmitting}>
+                        <Link href='/issues'>Back</Link>
+                    </Button>
+                </div>
             </form>
+
         </div>
     )
 }
